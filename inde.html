@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RMS iQor México — Despacho de cobranza extrajudicial, legal y administrativa. Recuperamos hasta el 85% de tu cartera vencida. Durango 263 Piso 3, Col. Roma Norte, CDMX.">
+<meta name="theme-color" content="#1a2332">
+<title>RMS iQor México — Cobranza extrajudicial, legal y administrativa en CDMX</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. TOKENS — identidad iQor: marino profundo + rojo.
+   El azul marino ES el otro color de marca iQor; aquí es la base
+   de autoridad y el rojo (#c8102e) la voz de marca.
+   ============================================================ */
+:root{
+  --color-primary:#1a2332;
+  --color-primary-deep:#121a26;
+  --color-primary-soft:#232f42;
+  --color-primary-line:#2b3a52;
+  --color-accent:#c8102e;
+  --color-accent-deep:#a3122d;
+  --color-accent-bright:#ff5468;
+  --color-surface:#f5f3ef;
+  --color-surface-warm:#ede9e1;
+  --color-card:#fbfaf7;
+  --color-text:#2c2c2c;
+  --color-text-muted:#6b6b6b;
+  --color-text-inverse:#f2efe8;
+  --color-text-inverse-muted:#9aa5b5;
+  --color-success:#2d7a4f;
+  --color-error:#b23a2e;
+  --color-border:#e0ddd8;
+  --color-border-dark:#2c3a50;
+  --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:32px; --sp-5:48px; --sp-6:64px; --sp-7:96px; --sp-8:128px;
+  --r-tech:4px; --r-card:12px; --r-pill:999px;
+  --font-display:"Radio Canada Big",sans-serif;
+  --font-body:"Radio Canada Big",sans-serif;
+  --shadow-soft:0 18px 44px -22px rgba(18,26,38,.28);
+  --shadow-lift:0 22px 48px -20px rgba(18,26,38,.38);
+  --ease-out:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ============ 2. BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);font-size:1rem;line-height:1.65;color:var(--color-text);background:var(--color-surface)}
+body.no-scroll{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+ul,ol{list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.08;letter-spacing:-.015em;color:var(--color-primary)}
+section{scroll-margin-top:92px}
+:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;border-radius:2px}
+::selection{background:var(--color-accent);color:var(--color-text-inverse)}
+
+.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--color-accent);z-index:260}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.skip{position:absolute;left:16px;top:-64px;z-index:400;background:var(--color-primary);color:var(--color-text-inverse);padding:10px 18px;border-radius:var(--r-tech);transition:top .2s var(--ease-out)}
+.skip:focus{top:12px}
+
+.link-line{position:relative;display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--color-primary)}
+.link-line::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:var(--color-accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+.link-line:hover::after,.link-line:focus-visible::after{transform:scaleX(1)}
+.link-line .arr{transition:transform .25s var(--ease-out)}
+.link-line:hover .arr{transform:translateX(4px)}
+.punto{color:var(--color-accent)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:.98rem;letter-spacing:.01em;border-radius:var(--r-tech);padding:15px 26px;transition:transform .25s var(--ease-out),background-color .25s var(--ease-out),box-shadow .25s var(--ease-out),border-color .25s var(--ease-out)}
+.btn-primary{background:var(--color-accent);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);background:#a80d26;box-shadow:0 12px 26px -12px rgba(200,16,46,.55)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{border:1px solid rgba(26,35,50,.28);color:var(--color-primary);background:transparent}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--color-accent);background:rgba(200,16,46,.06)}
+
+[data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease-out),transform .65s var(--ease-out);transition-delay:var(--d,0ms)}
+[data-reveal].in-view{opacity:1;transform:none}
+
+.sec-head{display:grid;gap:var(--sp-2);margin-bottom:var(--sp-5)}
+.sec-head h2{font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:700;max-width:24ch}
+.sec-note{color:var(--color-text-muted);max-width:52ch;font-size:.98rem}
+@media(min-width:900px){
+  .sec-head{grid-template-columns:7fr 5fr;align-items:end}
+  .sec-note{justify-self:end;text-align:right;max-width:40ch}
+}
+.dark .sec-note{color:var(--color-text-inverse-muted)}
+
+.sec-index{position:absolute;top:var(--sp-4);right:0;font-family:var(--font-display);font-weight:700;font-size:clamp(72px,12vw,160px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(26,35,50,.12);pointer-events:none;user-select:none}
+.dark .sec-index{-webkit-text-stroke:1px rgba(200,16,46,.3)}
+
+/* ============ 2b. CO-BRANDING iQor ============ */
+.iqor-tile{width:44px;height:44px;flex:none;border-radius:10px;background:#fff;object-fit:contain;padding:5px;border:1px solid var(--color-border);box-shadow:0 6px 14px -8px rgba(18,26,38,.35);transition:transform .25s var(--ease-out)}
+.iqor-tile:hover{transform:translateY(-2px) rotate(-2deg)}
+.iqor-word{height:24px;width:auto;color:var(--color-accent);flex:none}
+.cobrand{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--r-card);padding:14px 22px;margin-bottom:var(--sp-5)}
+.cb-item{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--color-primary)}
+.cb-item .brand-mark{width:34px;height:34px}
+.cb-sep{width:1px;height:30px;background:var(--color-border)}
+.cb-item-iqor{display:inline-flex;align-items:center;gap:10px}
+.cb-note{margin-left:auto;font-size:.78rem;color:var(--color-text-muted)}
+@media(max-width:860px){.cb-note{margin-left:0;width:100%}}
+.foot-iqor{display:inline-flex;align-items:center;gap:10px;margin-top:var(--sp-2)}
+.foot-iqor .iqor-tile{width:36px;height:36px;border-color:var(--color-border-dark);background:var(--color-primary-soft)}
+.foot-iqor .iqor-word{color:var(--color-text-inverse);height:20px}
+.foot-iqor small{font-size:.74rem;color:var(--color-text-inverse-muted)}
+
+/* ============ 3. HEADER ============ */
+#site-header{position:sticky;top:0;z-index:200;background:var(--color-surface);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+#site-header.is-scrolled{border-color:var(--color-border);box-shadow:0 8px 24px -18px rgba(18,26,38,.3)}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);padding-block:var(--sp-2)}
+.brand{display:inline-flex;align-items:center;gap:12px}
+.brand-mark{width:40px;height:40px;flex:none;transition:transform .3s var(--ease-out)}
+.brand:hover .brand-mark{transform:rotate(-4deg) scale(1.05)}
+.brand-name{font-family:var(--font-display);font-weight:700;font-size:1.12rem;line-height:1.1;color:var(--color-primary)}
+.brand-name em{font-style:normal;color:var(--color-accent)}
+.brand-tag{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--color-text-muted)}
+.main-nav ul{display:none}
+.main-nav.is-open ul{display:grid;gap:4px;position:absolute;left:0;right:0;top:100%;background:var(--color-card);border-bottom:1px solid var(--color-border);padding:var(--sp-2) 20px var(--sp-3)}
+.main-nav a{position:relative;display:inline-block;padding:10px 4px;font-weight:500;font-size:.95rem;color:var(--color-text);transition:color .2s}
+.main-nav a::after{content:"";position:absolute;left:4px;right:4px;bottom:4px;height:2px;background:var(--color-accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+.main-nav a:hover::after,.main-nav a.is-active::after{transform:scaleX(1)}
+.main-nav a:hover{color:var(--color-primary)}
+.nav-cta{font-family:var(--font-display);font-weight:600;color:var(--color-accent-deep)!important}
+.nav-toggle{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:10px;border-radius:var(--r-tech);border:1px solid var(--color-border);background:var(--color-card);transition:transform .2s var(--ease-out)}
+.nav-toggle:hover{transform:translateY(-2px)}
+.nav-toggle span{display:block;height:2px;background:var(--color-primary);transition:transform .3s var(--ease-out),opacity .3s}
+.nav-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.is-open span:nth-child(2){opacity:0}
+.nav-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:900px){
+  .nav-toggle{display:none}
+  .main-nav ul{display:flex;align-items:center;gap:var(--sp-2)}
+  .main-nav.is-open ul{position:static;background:none;border:none;padding:0}
+  .main-nav a{font-size:.88rem}
+}
+@media(min-width:1080px){.main-nav ul{gap:var(--sp-3)}.main-nav a{font-size:.95rem}}
+
+/* ============ 4. HERO ============ */
+.hero{padding-block:var(--sp-6);position:relative;overflow:hidden}
+.hero-grid{display:grid;gap:var(--sp-5);grid-template-columns:repeat(12,1fr);align-items:center}
+.hero-copy{grid-column:span 12}
+.hero-panel{grid-column:span 12}
+@media(min-width:960px){
+  .hero{padding-block:var(--sp-7) var(--sp-6)}
+  .hero-copy{grid-column:span 7}
+  .hero-panel{grid-column:span 5}
+}
+.hero h1{font-size:clamp(2.45rem,5.6vw,4.15rem);font-weight:700;max-width:15ch;margin-bottom:var(--sp-3)}
+.hl{box-shadow:inset 0 -.32em 0 rgba(200,16,46,.32);padding-inline:.05em}
+.hero-lead{font-size:1.08rem;color:var(--color-text-muted);max-width:54ch;margin-bottom:var(--sp-4)}
+.hero-lead strong{color:var(--color-text);font-weight:600}
+.hero-actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;margin-bottom:var(--sp-4)}
+.hero-proof{display:flex;flex-wrap:wrap;gap:12px var(--sp-3)}
+.hero-proof li{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;color:var(--color-text-muted)}
+.hero-proof svg{width:15px;height:15px;stroke:var(--color-success);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.hero-coords{margin-top:var(--sp-5);display:flex;align-items:center;gap:10px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-muted)}
+.hero-coords i{width:7px;height:7px;background:var(--color-accent);transform:rotate(45deg);flex:none}
+
+.hero-panel{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow-soft)}
+.panel-media{position:relative;height:230px;overflow:hidden}
+.panel-media img{width:100%;height:100%;object-fit:cover;animation:kenburns 22s var(--ease-out) infinite alternate}
+@keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.09) translate(-1.5%,2%)}}
+.panel-badge{position:absolute;top:12px;left:12px;background:var(--color-accent);color:#fff;font-family:var(--font-display);font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;border-radius:var(--r-pill);padding:6px 14px}
+.panel-body{padding:var(--sp-3)}
+.donut-row{display:flex;align-items:center;gap:var(--sp-3);padding-bottom:var(--sp-3);border-bottom:1px dashed var(--color-border);margin-bottom:var(--sp-2)}
+.donut-wrap{position:relative;width:112px;height:112px;flex:none}
+.donut{width:112px;height:112px;transform:rotate(-90deg)}
+.donut circle{fill:none;stroke-width:10}
+.donut-track{stroke:rgba(26,35,50,.09)}
+.donut-val{stroke:var(--color-accent);stroke-linecap:round;stroke-dasharray:326.73;stroke-dashoffset:326.73;transition:stroke-dashoffset 1.8s var(--ease-out) .3s}
+.donut-wrap.go .donut-val{stroke-dashoffset:49}
+.donut-center{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.donut-center strong{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--color-primary)}
+.donut-center small{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-muted)}
+.donut-note{font-size:.86rem;color:var(--color-text-muted)}
+.donut-note strong{display:block;font-family:var(--font-display);font-size:1rem;color:var(--color-primary);margin-bottom:2px}
+.metric-list li{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-2);padding:10px 2px;border-bottom:1px dashed var(--color-border)}
+.metric-list li:last-child{border-bottom:none}
+.metric-list .m-label{font-size:.8rem;color:var(--color-text-muted)}
+.metric-list .m-val{font-family:var(--font-display);font-weight:600;font-size:.98rem;color:var(--color-primary);display:inline-flex;align-items:center;gap:8px}
+.m-val.flash{animation:flashRed .8s var(--ease-out)}
+@keyframes flashRed{0%{color:var(--color-accent)}100%{color:var(--color-primary)}}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--color-success);position:relative;flex:none}
+.live-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--color-success);animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.4);opacity:0}}
+
+/* ============ 5. TICKER ============ */
+.ticker{border-block:1px solid var(--color-border);background:var(--color-card);overflow:hidden;padding-block:13px}
+.ticker-track{display:flex;width:max-content;animation:tick 30s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track ul{display:flex;align-items:center;gap:var(--sp-4);padding-right:var(--sp-4)}
+.ticker-track li{font-family:var(--font-display);font-size:.78rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--color-text-muted);white-space:nowrap}
+.ticker-track li::after{content:"◆";color:var(--color-accent);margin-left:var(--sp-4);font-size:.6rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ============ 5b. CUMPLIMIENTO (nuevo) ============ */
+.cumplimiento{background:var(--color-card);border-bottom:1px solid var(--color-border);padding-block:var(--sp-5)}
+.cumpl-title{font-size:clamp(1.25rem,2.2vw,1.7rem);font-weight:700;margin-bottom:var(--sp-4)}
+.comp-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-2)}
+@media(min-width:700px){.comp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.comp-grid{grid-template-columns:repeat(4,1fr)}}
+.comp-item{display:flex;gap:14px;align-items:flex-start;padding:var(--sp-2);border:1px solid transparent;border-radius:var(--r-tech);transition:background .25s,border-color .25s,transform .25s var(--ease-out)}
+.comp-item:hover{background:var(--color-surface);border-color:var(--color-border);transform:translateY(-3px)}
+.comp-ico{width:46px;height:46px;flex:none;display:grid;place-items:center;border:1px solid var(--color-border);border-radius:var(--r-tech);color:var(--color-accent);background:var(--color-surface);transition:background .25s,border-color .25s,color .25s}
+.comp-item:hover .comp-ico{background:var(--color-accent);border-color:var(--color-accent);color:#fff}
+.comp-ico svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.comp-item h3{font-size:.96rem;color:var(--color-primary);margin-bottom:3px}
+.comp-item p{font-size:.79rem;color:var(--color-text-muted);line-height:1.5}
+
+/* ============ 6. DIVISIONES ============ */
+.divisiones{position:relative;padding-block:var(--sp-7)}
+.bento{display:grid;gap:var(--sp-3);grid-template-columns:1fr}
+@media(min-width:960px){
+  .bento{grid-template-columns:repeat(12,1fr)}
+  .card-a{grid-column:span 7}.card-b{grid-column:span 5}
+  .card-c{grid-column:span 5}.card-d{grid-column:span 7}
+  .card-e{grid-column:span 12}
+}
+.card{border:1px solid var(--color-border);background:var(--color-card);position:relative;transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out),border-color .3s var(--ease-out)}
+.card:hover{transform:translateY(-4px);border-color:var(--color-accent);box-shadow:var(--shadow-lift)}
+.card-num{position:absolute;top:16px;right:18px;font-family:var(--font-display);font-weight:500;font-size:.72rem;letter-spacing:.2em;color:var(--color-text-muted);z-index:2}
+.card h3{font-size:clamp(1.25rem,2vw,1.6rem);margin-bottom:12px}
+.card p{font-size:.94rem;color:var(--color-text-muted)}
+.card-a{background:var(--color-primary);border-color:var(--color-primary);border-radius:var(--r-card);padding:var(--sp-5)}
+.card-a h3{color:var(--color-text-inverse)}
+.card-a p{color:var(--color-text-inverse-muted)}
+.card-a .card-num{color:var(--color-accent-bright)}
+.card-a-grid{display:grid;gap:var(--sp-4)}
+@media(min-width:900px){.card-a-grid{grid-template-columns:7fr 5fr;align-items:center}}
+.card-a-fig{margin:0}
+.card-a-fig .fig-frame{display:block;overflow:hidden;border-radius:var(--r-tech);border:1px solid var(--color-border-dark)}
+.card-a-fig img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+@media(min-width:900px){.card-a-fig img{aspect-ratio:4/4.6}}
+.card-a:hover .card-a-fig img{transform:scale(1.05)}
+.card-a-fig figcaption{margin-top:10px;font-size:.74rem;letter-spacing:.04em;color:var(--color-text-inverse-muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--sp-3)}
+.chips li{border:1px solid var(--color-border-dark);color:var(--color-text-inverse);border-radius:var(--r-pill);padding:6px 14px;font-size:.78rem;font-weight:500;transition:border-color .25s,transform .25s var(--ease-out)}
+.chips li:hover{border-color:var(--color-accent-bright);transform:translateY(-2px)}
+.card-a .rate{margin-top:var(--sp-3);font-family:var(--font-display);font-size:.85rem;color:var(--color-accent-bright)}
+.card-b{border-radius:var(--r-tech);padding:var(--sp-4)}
+.sla{margin-top:var(--sp-2);border-top:1px solid var(--color-border)}
+.sla li{display:flex;justify-content:space-between;gap:var(--sp-2);padding:10px 2px;border-bottom:1px solid var(--color-border);font-size:.86rem}
+.sla .k{color:var(--color-text-muted)}
+.sla .v{font-weight:600;font-family:var(--font-display);color:var(--color-primary)}
+.card-c{border-radius:var(--r-card);padding:var(--sp-4) var(--sp-3)}
+.card-c-fig{margin:calc(-1*var(--sp-4)) calc(-1*var(--sp-3)) var(--sp-3);overflow:hidden;border-radius:var(--r-card) var(--r-card) 0 0}
+.card-c-fig img{width:100%;height:150px;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+.card-c:hover .card-c-fig img{transform:scale(1.06)}
+.stat-chips{display:grid;gap:10px;margin-top:var(--sp-3)}
+.stat-chips li{background:var(--color-surface-warm);border-radius:var(--r-tech);padding:10px 14px;font-size:.84rem}
+.stat-chips strong{font-family:var(--font-display);color:var(--color-primary);display:block}
+.card-d{border-radius:var(--r-tech);padding:var(--sp-4);display:grid;gap:var(--sp-3)}
+@media(min-width:700px){.card-d{grid-template-columns:1fr 1fr}}
+.gest{border:1px solid var(--color-border);border-radius:var(--r-card);padding:var(--sp-3)}
+.gest+.gest{border-style:dashed;background:var(--color-surface)}
+.gest h4{font-size:1rem;margin-bottom:8px}
+.gest ul{display:grid;gap:6px;margin-top:10px}
+.gest ul li{font-size:.84rem;color:var(--color-text-muted);padding-left:18px;position:relative}
+.gest ul li::before{content:"—";position:absolute;left:0;color:var(--color-accent-deep)}
+.card-e{border-radius:var(--r-card);padding:var(--sp-5);display:grid;gap:var(--sp-4)}
+@media(min-width:900px){.card-e{grid-template-columns:5fr 7fr;align-items:center}}
+.chart{display:grid;gap:14px}
+.bar-row{display:grid;grid-template-columns:74px 1fr 44px;align-items:center;gap:14px;font-size:.82rem}
+.bar-row .lbl{font-family:var(--font-display);font-weight:600;color:var(--color-primary)}
+.bar-row .pct{text-align:right;color:var(--color-text-muted);font-weight:500}
+.bar{height:10px;background:var(--color-surface-warm);border-radius:var(--r-pill);overflow:hidden}
+.bar i{display:block;height:100%;width:var(--w);background:var(--color-accent);border-radius:inherit;transform:scaleX(0);transform-origin:left;transition:transform 1.1s var(--ease-out) .25s}
+.card-e.go .bar i{transform:scaleX(1)}
+.bar-row:nth-child(2) .bar i{opacity:.68}
+.bar-row:nth-child(3) .bar i{opacity:.44}
+.bar-row:nth-child(4) .bar i{opacity:.24}
+
+/* ============ 7. MÉTODO ============ */
+.metodo{background:var(--color-primary);color:var(--color-text-inverse);position:relative;padding-block:var(--sp-7)}
+.metodo h2{color:var(--color-text-inverse)}
+.metodo .sec-note{color:var(--color-text-inverse-muted)}
+.steps{position:relative;display:grid;gap:var(--sp-5);margin-top:var(--sp-6)}
+.steps-line{position:absolute;left:27px;top:28px;bottom:0;width:2px;background:rgba(242,239,232,.15)}
+.steps-line i{display:block;width:100%;height:100%;background:var(--color-accent-bright);transform:scaleY(0);transform-origin:top;transition:transform 1.6s var(--ease-out) .2s}
+.steps.go .steps-line i{transform:scaleY(1)}
+.step{position:relative;padding-left:84px}
+.step-ico{position:absolute;left:0;top:0;z-index:1;width:56px;height:56px;display:grid;place-items:center;background:var(--color-primary-soft);border:1px solid var(--color-border-dark);transition:transform .3s var(--ease-out),border-color .3s}
+.step:hover .step-ico{transform:translateY(-4px) rotate(-3deg);border-color:var(--color-accent-bright)}
+.step:nth-of-type(1) .step-ico{border-radius:var(--r-tech)}
+.step:nth-of-type(2) .step-ico{border-radius:var(--r-card)}
+.step:nth-of-type(3) .step-ico{border-radius:var(--r-pill)}
+.step:nth-of-type(4) .step-ico{border-radius:var(--r-tech)}
+.step-ico svg{width:28px;height:28px;stroke:var(--color-accent-bright);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.step-when{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-bright);border:1px solid rgba(255,84,104,.45);border-radius:var(--r-pill);padding:4px 12px;margin-bottom:10px}
+.step h3{color:var(--color-text-inverse);font-size:1.2rem;margin-bottom:8px}
+.step p{font-size:.88rem;color:var(--color-text-inverse-muted)}
+@media(min-width:900px){
+  .steps{grid-template-columns:repeat(4,1fr);gap:var(--sp-4)}
+  .steps-line{left:28px;right:calc(25% - 52px);top:27px;bottom:auto;width:auto;height:2px}
+  .steps-line i{transform:scaleX(0);transform-origin:left}
+  .steps.go .steps-line i{transform:scaleX(1)}
+  .step{padding-left:0}
+  .step-ico{position:static;margin-bottom:var(--sp-2)}
+}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-4);margin-top:var(--sp-7);border-top:1px solid var(--color-border-dark);padding-top:var(--sp-5)}
+@media(min-width:900px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat strong{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,3.6vw,3rem);color:var(--color-accent-bright);line-height:1;margin-bottom:6px}
+.stat span{font-size:.84rem;color:var(--color-text-inverse-muted)}
+.stats-note{margin-top:var(--sp-3);font-size:.74rem;color:var(--color-text-inverse-muted);opacity:.7}
+
+/* ============ 8. RESPALDO ============ */
+.respaldo{padding-block:var(--sp-7);position:relative}
+.split{display:grid;gap:var(--sp-5);align-items:center}
+@media(min-width:960px){.split{grid-template-columns:6fr 6fr;gap:var(--sp-6)}}
+.respaldo-copy h2{font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:700;margin-bottom:20px}
+.respaldo-copy p{color:var(--color-text-muted);margin-bottom:var(--sp-2);max-width:56ch}
+.ficha{margin-top:var(--sp-3);border-left:3px solid var(--color-accent);background:var(--color-card);border-radius:0 var(--r-card) var(--r-card) 0;padding:var(--sp-3);display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.ficha div strong{font-family:var(--font-display);font-size:1.3rem;color:var(--color-primary);display:block}
+.ficha div span{font-size:.76rem;color:var(--color-text-muted);letter-spacing:.06em;text-transform:uppercase}
+.global-strip{margin-top:var(--sp-3);border-top:1px solid var(--color-border);padding-top:var(--sp-2)}
+.gs-label{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent-deep)}
+.global-strip ul{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:6px}
+.global-strip li{font-size:.84rem;color:var(--color-text-muted)}
+.global-strip li:not(:last-child)::after{content:"·";color:var(--color-accent);margin-inline:8px;font-weight:700}
+.kb-figure{position:relative;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow-soft);aspect-ratio:4/3.4}
+.kb-figure img{width:100%;height:100%;object-fit:cover;animation:kenburns 26s var(--ease-out) infinite alternate}
+.kb-figure figcaption{position:absolute;left:16px;bottom:16px;right:16px;background:rgba(18,26,38,.85);color:var(--color-text-inverse);font-size:.78rem;padding:10px 16px;border-radius:var(--r-tech)}
+.net-figure{position:relative;margin-top:var(--sp-5);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow-soft)}
+.net-figure img{width:100%;height:clamp(220px,32vw,340px);object-fit:cover;animation:kenburns 28s var(--ease-out) infinite alternate}
+.net-figure figcaption{position:absolute;left:16px;bottom:16px;right:16px;background:rgba(18,26,38,.88);color:var(--color-text-inverse);font-size:.84rem;line-height:1.5;border-radius:var(--r-tech);padding:12px 18px}
+@media(min-width:800px){.net-figure figcaption{right:auto;max-width:62ch}}
+.net-figure figcaption strong{color:var(--color-accent-bright);font-family:var(--font-display)}
+
+/* ============ 9. EXPEDIENTE ============ */
+.expediente{padding-block:0 var(--sp-7)}
+.folder{position:relative;background:#e9dfc8;border-radius:0 var(--r-card) var(--r-card) var(--r-card);padding:var(--sp-6) var(--sp-4) var(--sp-5);box-shadow:var(--shadow-soft)}
+.folder::before{content:"";position:absolute;top:-26px;left:0;width:190px;height:26px;background:#e9dfc8;border-radius:10px 10px 0 0}
+.folder-tab{font-family:var(--font-display);font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7a6435;margin-bottom:var(--sp-3)}
+.stamp{position:absolute;top:var(--sp-4);right:var(--sp-4);transform:rotate(7deg);border:3px double var(--color-accent);color:var(--color-accent);border-radius:var(--r-tech);padding:8px 18px;font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85;z-index:2}
+.folder-grid{display:grid;gap:var(--sp-4)}
+@media(min-width:900px){.folder-grid{grid-template-columns:7fr 5fr;gap:var(--sp-5)}}
+.folder-grid h3{font-size:clamp(1.3rem,2.4vw,1.8rem);margin-bottom:var(--sp-2)}
+.folder-grid .narrativa p{color:#5c5140;font-size:.95rem;margin-bottom:var(--sp-2)}
+.folder-photo{position:relative;width:min(280px,100%);background:#fdfcf8;padding:10px 10px 12px;box-shadow:0 14px 28px -14px rgba(60,45,20,.45);transform:rotate(-2.5deg);transition:transform .4s var(--ease-out);margin:0 auto var(--sp-3)}
+.folder-photo:hover{transform:rotate(0deg) scale(1.02)}
+.folder-photo::before{content:"";position:absolute;top:-13px;left:50%;width:92px;height:26px;background:rgba(226,205,157,.78);transform:translateX(-50%) rotate(-2deg);box-shadow:0 1px 2px rgba(60,45,20,.2)}
+.folder-photo figcaption{font-size:.7rem;text-align:center;color:#7a6435;margin-top:8px;font-family:var(--font-display);letter-spacing:.06em}
+@media(min-width:700px){.folder-photo{float:right;margin:4px 0 var(--sp-2) var(--sp-3);transform:rotate(2.5deg)}}
+.case-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.case-metrics li{background:rgba(251,250,247,.75);border:1px solid #d8cbaa;border-radius:var(--r-tech);padding:14px 16px;transition:transform .25s var(--ease-out),border-color .25s}
+.case-metrics li:hover{transform:translateY(-3px);border-color:var(--color-accent)}
+.case-metrics strong{font-family:var(--font-display);font-size:1.15rem;color:var(--color-primary);display:block}
+.case-metrics span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#7a6435}
+.folder-foot{margin-top:var(--sp-3);font-size:.74rem;color:#8a7a55}
+
+/* ============ 10. COBERTURA ============ */
+.cobertura{background:var(--color-surface-warm);padding-block:var(--sp-7);position:relative}
+.cob-grid{display:grid;gap:var(--sp-5)}
+@media(min-width:960px){.cob-grid{grid-template-columns:6fr 6fr;gap:var(--sp-6)}}
+.cob-figure{border-radius:var(--r-card);overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow-soft)}
+.cob-figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.cob-figure:hover img{transform:scale(1.05)}
+.office-card{position:relative;z-index:2;background:var(--color-primary);color:var(--color-text-inverse);border-radius:var(--r-card);padding:var(--sp-3);margin:-64px var(--sp-2) 0;box-shadow:var(--shadow-lift)}
+.office-card h3{color:var(--color-accent-bright);font-size:1rem;margin-bottom:8px}
+.office-card address{font-style:normal;font-size:.9rem;color:var(--color-text-inverse);line-height:1.7}
+.office-card .hours{margin-top:10px;padding-top:10px;border-top:1px dashed var(--color-border-dark);font-size:.8rem;color:var(--color-text-inverse-muted)}
+.office-card a{color:var(--color-accent-bright)}
+.zones{border-top:2px solid var(--color-primary)}
+.zone{display:grid;grid-template-columns:1fr auto;gap:4px var(--sp-2);align-items:center;padding:var(--sp-2) 4px;border-bottom:1px dashed var(--color-border);transition:background .25s,padding-left .25s var(--ease-out)}
+.zone:hover{background:rgba(200,16,46,.07);padding-left:12px}
+.zone .z-name{font-family:var(--font-display);font-weight:600;color:var(--color-primary)}
+.zone .z-cities{grid-column:1;font-size:.82rem;color:var(--color-text-muted)}
+.zone .z-time{grid-row:span 2;grid-column:2;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-success);border:1px solid rgba(45,122,79,.4);border-radius:var(--r-pill);padding:5px 12px}
+.cob-note{margin-top:var(--sp-3);font-size:.85rem;color:var(--color-text-muted);display:flex;gap:10px;align-items:flex-start}
+.cob-note svg{width:18px;height:18px;flex:none;stroke:var(--color-accent-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+
+/* ============ 10b. FAQ (nuevo) ============ */
+.faq{padding-block:var(--sp-7);position:relative}
+.faq-list{max-width:820px;margin-top:var(--sp-4)}
+.faq-item{border:1px solid var(--color-border);border-radius:var(--r-tech);background:var(--color-card);margin-bottom:12px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.faq-item.open{border-color:var(--color-accent);box-shadow:var(--shadow-soft)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:19px 22px;text-align:left;font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--color-primary);transition:background .2s}
+.faq-q:hover{background:var(--color-surface)}
+.faq-ico{width:28px;height:28px;flex:none;border:1px solid var(--color-border);border-radius:50%;display:grid;place-items:center;color:var(--color-text-muted);transition:transform .35s var(--ease-out),border-color .3s,background .3s,color .3s}
+.faq-item.open .faq-ico{transform:rotate(45deg);border-color:var(--color-accent);background:var(--color-accent);color:#fff}
+.faq-ico svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease-out)}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a-inner{overflow:hidden}
+.faq-a p{padding:0 22px 22px;font-size:.93rem;color:var(--color-text-muted);line-height:1.65}
+.faq-a p strong{color:var(--color-text)}
+
+/* ============ 11. AGENDAR ============ */
+.agendar{background:var(--color-primary);color:var(--color-text-inverse);padding-block:var(--sp-7);position:relative}
+.agendar h2{color:var(--color-text-inverse);font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:700;margin-bottom:20px}
+.ag-grid{display:grid;gap:var(--sp-5)}
+@media(min-width:960px){.ag-grid{grid-template-columns:5fr 7fr;gap:var(--sp-6)}}
+.ag-copy p{color:var(--color-text-inverse-muted);max-width:48ch;margin-bottom:var(--sp-3)}
+.ag-list{display:grid;gap:14px;margin-bottom:var(--sp-4)}
+.ag-list li{display:flex;gap:12px;align-items:flex-start;font-size:.92rem}
+.ag-list svg{width:18px;height:18px;flex:none;stroke:var(--color-accent-bright);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
+.contact-direct{display:grid;gap:8px;border-top:1px solid var(--color-border-dark);padding-top:var(--sp-3)}
+.contact-direct a{display:inline-flex;gap:10px;align-items:center;font-family:var(--font-display);font-weight:500;color:var(--color-accent-bright);width:fit-content;transition:transform .2s var(--ease-out)}
+.contact-direct a:hover{transform:translateX(4px)}
+.sala-figure{margin-top:var(--sp-4)}
+.sala-figure .fig-frame{display:block;overflow:hidden;border-radius:var(--r-card)}
+.sala-figure img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+.sala-figure:hover img{transform:scale(1.05)}
+.sala-figure figcaption{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:.78rem;color:var(--color-text-inverse-muted)}
+.sala-figure figcaption::before{content:"";width:7px;height:7px;background:var(--color-accent-bright);transform:rotate(45deg);flex:none}
+.form-card{background:var(--color-card);color:var(--color-text);border-radius:var(--r-card);padding:var(--sp-4);box-shadow:var(--shadow-lift)}
+.form-card h3{font-size:1.25rem;margin-bottom:var(--sp-3)}
+.form-grid{display:grid;gap:var(--sp-2)}
+@media(min-width:700px){.form-grid{grid-template-columns:1fr 1fr}.field.full{grid-column:1/-1}}
+.field{display:grid;gap:6px}
+.field label{font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-muted)}
+.field label b{color:var(--color-error)}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:.94rem;color:var(--color-text);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--r-tech);padding:12px 14px;transition:border-color .2s,box-shadow .2s}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#c9c4bb}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:none;border-color:var(--color-accent);box-shadow:0 0 0 3px rgba(200,16,46,.18)}
+.field .has-error{border-color:var(--color-error)}
+.field-err{font-size:.76rem;color:var(--color-error);font-weight:500}
+.form-foot{margin-top:var(--sp-3);display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2);justify-content:space-between}
+.form-foot small{color:var(--color-text-muted);max-width:34ch}
+#form-ok{border:1px solid rgba(45,122,79,.4);background:rgba(45,122,79,.08);border-radius:var(--r-card);padding:var(--sp-4);text-align:left}
+#form-ok svg{width:44px;height:44px;stroke:var(--color-success);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:var(--sp-2)}
+#form-ok h3{margin-bottom:8px}
+#form-ok p{color:var(--color-text-muted);font-size:.94rem;margin-bottom:var(--sp-2)}
+#form-ok strong{color:var(--color-primary);font-family:var(--font-display)}
+
+/* ============ 12. FOOTER ============ */
+footer{background:var(--color-primary-deep);color:var(--color-text-inverse-muted);padding-top:var(--sp-6)}
+.foot-grid{display:grid;gap:var(--sp-5);padding-bottom:var(--sp-6)}
+@media(min-width:800px){.foot-grid{grid-template-columns:2fr 1fr 1fr 1.4fr}}
+.foot-brand p{font-size:.88rem;max-width:34ch;margin-top:var(--sp-2)}
+.foot-brand .brand-name{color:var(--color-text-inverse)}
+footer h4{color:var(--color-accent-bright);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:var(--sp-2)}
+.foot-links li{margin-bottom:8px}
+.foot-links a{position:relative;font-size:.9rem;transition:color .2s}
+.foot-links a::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:100%;background:var(--color-accent-bright);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+.foot-links a:hover{color:var(--color-text-inverse)}
+.foot-links a:hover::after{transform:scaleX(1)}
+.foot-contact address{font-style:normal;font-size:.88rem;line-height:1.8}
+.foot-contact a{color:var(--color-accent-bright)}
+.foot-bottom{border-top:1px solid var(--color-border-dark);padding-block:var(--sp-3);display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-4);justify-content:space-between;align-items:center;font-size:.78rem}
+.foot-legal{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.foot-legal button{font-size:.78rem;color:var(--color-text-inverse-muted);position:relative;transition:color .2s}
+.foot-legal button::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:100%;background:var(--color-accent-bright);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+.foot-legal button:hover{color:var(--color-text-inverse)}
+.foot-legal button:hover::after{transform:scaleX(1)}
+
+/* ============ 13. MODALES / TO-TOP ============ */
+.modal{display:none;position:fixed;inset:0;z-index:300;background:rgba(18,26,38,.66);padding:20px;align-items:center;justify-content:center}
+.modal.is-open{display:flex}
+.modal-box{background:var(--color-card);color:var(--color-text);border-radius:var(--r-card);max-width:620px;width:100%;max-height:82vh;overflow:auto;padding:var(--sp-4);position:relative;box-shadow:var(--shadow-lift);border-top:4px solid var(--color-accent)}
+.modal-box h3{margin-bottom:var(--sp-2);padding-right:48px}
+.modal-box p{font-size:.9rem;color:var(--color-text-muted);margin-bottom:var(--sp-2)}
+.modal-close{position:absolute;top:14px;right:14px;width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--color-border);border-radius:var(--r-tech);transition:transform .2s var(--ease-out),border-color .2s}
+.modal-close:hover{transform:translateY(-2px) rotate(90deg);border-color:var(--color-accent)}
+.modal-close svg{width:16px;height:16px;stroke:var(--color-primary);stroke-width:2;fill:none;stroke-linecap:round}
+#to-top{position:fixed;right:20px;bottom:20px;z-index:250;width:50px;height:50px;border-radius:var(--r-pill);background:var(--color-accent);color:#fff;display:grid;place-items:center;box-shadow:var(--shadow-lift);opacity:0;transform:translateY(16px);transition:opacity .3s var(--ease-out),transform .3s var(--ease-out),background .2s;pointer-events:none}
+#to-top.is-visible{opacity:1;transform:none;pointer-events:auto}
+#to-top:hover{background:#a80d26;transform:translateY(-3px)}
+#to-top svg{width:18px;height:18px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ============ 14. MOVIMIENTO REDUCIDO ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
+  .ticker{overflow-x:auto}
+  .ticker-track{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido principal</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="#recuperacion" aria-label="RMS iQor México — ir al inicio">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="37" height="37" rx="6" fill="#c8102e"/>
+        <path d="M10 27l7-8 5 4 8-11" stroke="#f5f3ef" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M25 12h5v5" stroke="#f5f3ef" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>
+        <span class="brand-name">RMS <em>iQor</em> México</span>
+        <span class="brand-tag">Recuperación de cartera</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú de navegación">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#divisiones">Divisiones</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#respaldo">Respaldo iQor</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a class="nav-cta link-line" href="#agendar">Agendar consultoría <span class="arr" aria-hidden="true">→</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- HERO -->
+  <section class="hero" id="recuperacion" aria-labelledby="hero-titulo">
+    <div class="wrap hero-grid">
+      <div class="hero-copy" data-reveal>
+        <h1 id="hero-titulo">Recuperamos hasta el <span class="hl">85%</span> de tu cartera vencida en México<span class="punto">.</span></h1>
+        <p class="hero-lead">Cobranza <strong>extrajudicial, legal y administrativa</strong> para banca, fintech y empresas con cartera vencida. Más de 20 años operando desde la Roma, con el respaldo de iQor y su red de 45,000 agentes a nivel global.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#agendar">Agendar diagnóstico</a>
+          <a class="link-line" href="#metodo">Ver el método <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <ul class="hero-proof" data-stagger>
+          <li data-reveal><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 4.5"/></svg> Diagnóstico sin costo en 5 días hábiles</li>
+          <li data-reveal><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 4.5"/></svg> Sin anticipo: cobramos por recuperación</li>
+          <li data-reveal><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 4.5"/></svg> Cumplimiento CONDUSEF y LFPDPPP</li>
+        </ul>
+        <p class="hero-coords"><i aria-hidden="true"></i> 19.4194° N · 99.1615° O — Durango 263, Roma Norte, CDMX</p>
+      </div>
+
+      <aside class="hero-panel" aria-label="Panel de gestión en tiempo real" data-reveal>
+        <div class="panel-media">
+          <img src="https://image.qwenlm.ai/public_source/26fcb8d2-c0f8-4435-9ca4-226141ddbdce/1f55f103c-2155-4310-90b2-01d7e0198656.png" width="1024" height="1024" alt="Libro de contabilidad abierto en el escritorio del despacho, con factura sellada PAGADO bajo una lámpara de latón" fetchpriority="high">
+          <span class="panel-badge">Mesa de control · Roma Norte</span>
+        </div>
+        <div class="panel-body">
+          <div class="donut-row">
+            <div class="donut-wrap" id="donut">
+              <svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Tasa máxima de recuperación histórica: 85 por ciento">
+                <circle class="donut-track" cx="60" cy="60" r="52"/>
+                <circle class="donut-val" cx="60" cy="60" r="52"/>
+              </svg>
+              <div class="donut-center"><strong data-count="85" data-suffix="%">0%</strong><small>recuperado</small></div>
+            </div>
+            <p class="donut-note"><strong>Tasa máxima histórica</strong> en carteras de hasta 180 días de antigüedad, corte 2025.</p>
+          </div>
+          <ul class="metric-list">
+            <li><span class="m-label">Cartera en gestión hoy</span><span class="m-val" id="cartera-viva">$48,721,455 MXN <span class="live-dot" aria-hidden="true"></span></span></li>
+            <li><span class="m-label">Días promedio de recuperación</span><span class="m-val">47</span></li>
+            <li><span class="m-label">Convenios cerrados este mes</span><span class="m-val">1,284</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <ul>
+        <li>Sofomes</li><li>Fintech</li><li>Arrendadoras</li><li>Retail</li><li>Telecomunicaciones</li><li>Educación privada</li><li>Seguros</li><li>Cooperativas</li><li>Autofinanciamiento</li><li>Factoraje</li>
+      </ul>
+      <ul>
+        <li>Sofomes</li><li>Fintech</li><li>Arrendadoras</li><li>Retail</li><li>Telecomunicaciones</li><li>Educación privada</li><li>Seguros</li><li>Cooperativas</li><li>Autofinanciamiento</li><li>Factoraje</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CUMPLIMIENTO (nuevo) -->
+  <section class="cumplimiento" id="cumplimiento" aria-labelledby="cumpl-titulo">
+    <div class="wrap">
+      <h2 class="cumpl-title" id="cumpl-titulo" data-reveal>Cumplimiento que protege tu operación<span class="punto">.</span></h2>
+      <div class="comp-grid" data-stagger>
+        <div class="comp-item" data-reveal>
+          <span class="comp-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></span>
+          <div><h3>Gestión conforme a CONDUSEF</h3><p>Cero prácticas de acoso, sin contacto a terceros y en horarios permitidos por la norma.</p></div>
+        </div>
+        <div class="comp-item" data-reveal>
+          <span class="comp-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg></span>
+          <div><h3>Datos protegidos (LFPDPPP)</h3><p>Tu cartera se trata bajo la ley mexicana de datos personales, con acceso restringido.</p></div>
+        </div>
+        <div class="comp-item" data-reveal>
+          <span class="comp-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></span>
+          <div><h3>Llamadas grabadas y auditables</h3><p>Cada gestión queda registrada y trazable para tu auditoría y la de tu regulador.</p></div>
+        </div>
+        <div class="comp-item" data-reveal>
+          <span class="comp-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a1 1 0 0 1 1 1v16l-3-2-3 2-3-2-3 2V4a1 1 0 0 1 1-1z"/><path d="M9 8h6M9 12h6"/></svg></span>
+          <div><h3>NDA desde el diagnóstico</h3><p>Firmamos confidencialidad antes de recibir tu cartera. Nunca la compartimos con terceros.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVISIONES -->
+  <section class="divisiones" id="divisiones" aria-labelledby="div-titulo">
+    <span class="sec-index" aria-hidden="true">01</span>
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <h2 id="div-titulo">Cinco maneras de recuperar lo que tu empresa ya generó<span class="punto">.</span></h2>
+        <p class="sec-note">Cada cartera entra por la división que le corresponde. Ninguna se gestiona igual que la anterior.</p>
+      </div>
+
+      <div class="bento" data-stagger>
+        <article class="card card-a" data-reveal>
+          <span class="card-num" aria-hidden="true">01 /</span>
+          <div class="card-a-grid">
+            <div>
+              <h3>Cobranza Extrajudicial y Legal</h3>
+              <p>Gestión negociada con expediente sólido y, cuando procede, vía ejecutiva mercantil. Convenios con garantías reales, seguimiento judicial y diligencias hasta la liquidación total del adeudo.</p>
+              <ul class="chips">
+                <li>Negociación estructurada</li>
+                <li>Convenios con garantía</li>
+                <li>Juicio ejecutivo mercantil</li>
+                <li>Embargos y diligencias</li>
+              </ul>
+              <p class="rate">↳ Tasa típica: 72–85% en cartera de hasta 180 días.</p>
+            </div>
+            <figure class="card-a-fig">
+              <span class="fig-frame"><img src="https://image.qwenlm.ai/public_source/26fcb8d2-c0f8-4435-9ca4-226141ddbdce/1f2032be9-f54c-47eb-8583-7cdbe253cfab.png" width="1024" height="1024" loading="lazy" decoding="async" alt="Báscula de latón de la justicia sobre un expediente jurídico amarrado con listón rojo, iluminada con un foco cálido sobre fondo marino"></span>
+              <figcaption>El expediente siempre listo: la negociación primero, la ley después.</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="card card-b" data-reveal>
+          <span class="card-num" aria-hidden="true">02 /</span>
+          <h3>Cobranza Administrativa (BPO)</h3>
+          <p>Operamos tu proceso de cobranza de punta a punta con nuestro personal y tecnología, bajo tus SLA y con tu formato de reporte.</p>
+          <ul class="sla">
+            <li><span class="k">SLA de primer contacto</span><span class="v">24 h</span></li>
+            <li><span class="k">Conciliación de pagos</span><span class="v">Diaria</span></li>
+            <li><span class="k">Reporteo ejecutivo</span><span class="v">Semanal</span></li>
+            <li><span class="k">Integración ERP</span><span class="v">SAP · Oracle · propios</span></li>
+          </ul>
+        </article>
+
+        <article class="card card-c" data-reveal>
+          <span class="card-num" aria-hidden="true">03 /</span>
+          <figure class="card-c-fig">
+            <img src="https://image.qwenlm.ai/public_source/26fcb8d2-c0f8-4435-9ca4-226141ddbdce/1da1486e8-d3e5-45b9-9501-335cb0908e22.png" width="1024" height="1024" loading="lazy" decoding="async" alt="Diadema telefónica profesional sobre un escritorio de gestión en orden, junto a una libreta roja y una taza de café con luz cálida de ventana">
+          </figure>
+          <h3>Subcontratación de Personal</h3>
+          <p>Ejecutivos de cobranza certificados, contratados y supervisados por RMS. Operan en tu piso o en nuestro centro, con tu marca y tus guiones.</p>
+          <ul class="stat-chips">
+            <li><strong>Desde 8 ejecutivos</strong> plantillas escalables por campaña</li>
+            <li><strong>120 h de capacitación</strong> inicial en regulación y negociación</li>
+            <li><strong>Rotación anual 4.2%</strong> contra 28% del promedio del sector</li>
+          </ul>
+        </article>
+
+        <article class="card card-d" data-reveal>
+          <span class="card-num" aria-hidden="true">04 /</span>
+          <div>
+            <h3>Gestoría Compartida y Dedicada</h3>
+            <p>Elige el régimen que tu volumen de cartera justifica — ni un peso de más.</p>
+          </div>
+          <div class="gest">
+            <h4>Compartida</h4>
+            <p>Un equipo gestiona varias carteras afines del mismo sector.</p>
+            <ul><li>Pagas solo gestión activa</li><li>Ideal para carteras &lt; $5 M MXN</li><li>Arranque en 72 h</li></ul>
+          </div>
+          <div class="gest">
+            <h4>Dedicada</h4>
+            <p>Un equipo exclusivo para tu cartera, con tu marca y tus guiones.</p>
+            <ul><li>Supervisor exclusivo</li><li>Tableros en tiempo real</li><li>Capacitación en tu producto</li></ul>
+          </div>
+        </article>
+
+        <article class="card card-e" id="card-analisis" data-reveal>
+          <span class="card-num" aria-hidden="true">05 /</span>
+          <div>
+            <h3>Análisis de Cartera</h3>
+            <p>Antes de asignar un solo recurso, segmentamos tu cartera por edad, monto, perfil y probabilidad real de pago. Recibes un informe ejecutivo con proyección de recuperación por segmento.</p>
+            <p style="margin-top:12px"><a class="link-line" href="#agendar">Solicitar diagnóstico <span class="arr" aria-hidden="true">→</span></a></p>
+          </div>
+          <div class="chart" role="img" aria-label="Distribución típica de cartera vencida por antigüedad: 38% a 30 días, 27% a 60 días, 19% a 90 días y 16% a más de 180 días">
+            <div class="bar-row"><span class="lbl">1–30 días</span><span class="bar"><i style="--w:38%"></i></span><span class="pct">38%</span></div>
+            <div class="bar-row"><span class="lbl">31–60</span><span class="bar"><i style="--w:27%"></i></span><span class="pct">27%</span></div>
+            <div class="bar-row"><span class="lbl">61–90</span><span class="bar"><i style="--w:19%"></i></span><span class="pct">19%</span></div>
+            <div class="bar-row"><span class="lbl">180+</span><span class="bar"><i style="--w:16%"></i></span><span class="pct">16%</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section class="metodo dark" id="metodo" aria-labelledby="met-titulo">
+    <span class="sec-index" aria-hidden="true">02</span>
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <h2 id="met-titulo">Cuatro movimientos, un solo objetivo: el depósito<span class="punto">.</span></h2>
+        <p class="sec-note">El mismo protocolo desde 2003, afinado con cada cartera asignada.</p>
+      </div>
+
+      <div class="steps" id="steps" data-stagger>
+        <div class="steps-line" aria-hidden="true"><i></i></div>
+
+        <div class="step" data-reveal>
+          <div class="step-ico"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="4" width="16" height="22" rx="2"/><path d="M9 10h8M9 14h8M9 18h5"/><circle cx="21" cy="21" r="6"/><path d="M25.5 25.5L29 29"/></svg></div>
+          <span class="step-when">Días 0–5</span>
+          <h3>Diagnóstico</h3>
+          <p>Recibimos tu cartera y la segmentamos por antigüedad, monto y perfil de deudor. En 5 días hábiles tienes un mapa de recuperabilidad por escrito.</p>
+        </div>
+
+        <div class="step" data-reveal>
+          <div class="step-ico"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="6" cy="16" r="3"/><circle cx="26" cy="6" r="3"/><circle cx="26" cy="26" r="3"/><path d="M9 14.5L23 7M9 17.5L23 25"/><path d="M14 16h4"/></svg></div>
+          <span class="step-when">Días 5–10</span>
+          <h3>Estrategia</h3>
+          <p>Definimos canal, tono y ruta legal por segmento: negociación telefónica, convenio estructurado o vía judicial. Nada queda al criterio del momento.</p>
+        </div>
+
+        <div class="step" data-reveal>
+          <div class="step-ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 5c-1.5 9 11 21.5 20 20l1.2-5.2-6-2-2.2 3.2c-4-2-8-6-10-10L13.2 9l-2-6z"/><path d="M20 4.5c4 1 6.8 3.8 7.8 7.8M20 9.5c2 .5 3.4 1.9 3.9 3.9"/></svg></div>
+          <span class="step-when">Semana 2 en adelante</span>
+          <h3>Ejecución</h3>
+          <p>Gestión multicanal con guion regulatorio, promesas de pago verificadas y visitas domiciliarias georreferenciadas donde el caso lo amerita.</p>
+        </div>
+
+        <div class="step" data-reveal>
+          <div class="step-ico"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="10"/><path d="M16 10.5v11M19 13.2c0-1.4-1.3-2.4-3-2.4s-3 1-3 2.4 1.3 2.4 3 2.4 3 1 3 2.4-1.3 2.4-3 2.4-3-1-3-2.4"/></svg></div>
+          <span class="step-when">Mes 2–3 · promedio 47 días</span>
+          <h3>Recuperación</h3>
+          <p>Cada peso recuperado se acredita contra tu ERP con conciliación diaria. Reporte semanal hasta la liquidación del lote asignado.</p>
+        </div>
+      </div>
+
+      <div class="stats" data-stagger>
+        <div class="stat" data-reveal><strong data-count="20" data-suffix="+">0</strong><span>años operando en el mercado mexicano</span></div>
+        <div class="stat" data-reveal><strong data-count="45000" data-suffix="+">0</strong><span>agentes de la red global iQor respaldando la operación</span></div>
+        <div class="stat" data-reveal><strong data-count="32">0</strong><span>entidades federativas con cobertura activa</span></div>
+        <div class="stat" data-reveal><strong data-count="47">0</strong><span>días: promedio de recuperación por lote</span></div>
+      </div>
+      <p class="stats-note">Cifras de operación RMS iQor México, corte primer trimestre 2025.</p>
+    </div>
+  </section>
+
+  <!-- RESPALDO iQor -->
+  <section class="respaldo" id="respaldo" aria-labelledby="res-titulo">
+    <span class="sec-index" aria-hidden="true">03</span>
+    <div class="wrap">
+      <div class="cobrand" data-reveal>
+        <span class="cb-item">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="1.5" y="1.5" width="37" height="37" rx="6" fill="#c8102e"/><path d="M10 27l7-8 5 4 8-11" stroke="#f5f3ef" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 12h5v5" stroke="#f5f3ef" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          RMS México
+        </span>
+        <span class="cb-sep" aria-hidden="true"></span>
+        <span class="cb-item-iqor">
+          <img class="iqor-tile" src="https://play-lh.googleusercontent.com/pNAjN7gkFIX7k5SUNRCyO28vHe75s8SQVzFZi3ko_y_yIITOdwaXuDGiIQJ-MsC1SfQ" width="44" height="44" loading="lazy" decoding="async" alt="Logotipo de iQor">
+          <svg class="iqor-word" viewBox="0 0 108 40" role="img" aria-label="iQor"><text x="2" y="31" font-family="Arial, Helvetica, sans-serif" font-size="34" font-style="italic" font-weight="700" letter-spacing="-1.5" fill="currentColor">iqor</text></svg>
+        </span>
+        <span class="cb-note">Una empresa de la red global iQor · 45,000+ agentes · 30+ países</span>
+      </div>
+
+      <div class="split">
+        <div class="respaldo-copy" data-reveal>
+          <h2 id="res-titulo">Fuerza de red global, criterio de despacho local<span class="punto">.</span></h2>
+          <p>RMS iQor nace de la suma entre un despacho mexicano con más de dos décadas en cobranza y la red global de iQor, empresa de business process outsourcing con presencia en más de 30 países.</p>
+          <p>Eso se traduce en infraestructura que un despacho independiente no puede costear solo: marcación predictiva, grabación y analítica de llamadas, continuidad operativa certificada y protocolos de cumplimiento alineados a estándares internacionales.</p>
+          <div class="ficha">
+            <div><strong>45,000+</strong><span>agentes en la red</span></div>
+            <div><strong>30+</strong><span>países con operación</span></div>
+            <div><strong>24/7</strong><span>continuidad operativa</span></div>
+          </div>
+          <div class="global-strip">
+            <span class="gs-label">Red iQor en el mundo</span>
+            <ul>
+              <li>Dallas</li><li>Bogotá</li><li>Manila</li><li>Estambul</li><li>Kuala Lumpur</li><li>Buenos Aires</li><li>Nueva Delhi</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="kb-figure" data-reveal>
+          <img src="https://image.qwenlm.ai/public_source/26fcb8d2-c0f8-4435-9ca4-226141ddbdce/15f63300f-1e07-4dad-a9f5-99eb4133243e.png" width="1024" height="1024" loading="lazy" decoding="async" alt="Paseo de la Reforma al anochecer, con el Ángel de la Independencia dorado y torres corporativas iluminadas">
+          <figcaption>Operación nacional coordinada desde la Ciudad de México.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="net-figure" data-reveal>
+        <img src="https://image.qwenlm.ai/public_source/26fcb8d2-c0f8-4435-9ca4-226141ddbdce/1c682f407-5836-46de-971d-b21de56cf2aa.png" width="1024" height="1024" loading="lazy" decoding="async" alt="Mapamundi en tono marino sobre papel crema, con pines rojos brillantes e hilos que conectan México con Estados Unidos, Sudamérica, Europa y el Sudeste Asiático">
+        <figcaption><strong>Red iQor.</strong> Los hilos conectan la Roma con Dallas, Bogotá, Manila y Estambul: tu cartera se gestiona en Durango 263, con 45,000 agentes de músculo global detrás.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- EXPEDIENTE -->
+  <section class="expediente" id="expediente" aria-labelledby="exp-titulo">
+    <div class="wrap">
+      <div class="folder" data-reveal>
+        <p class="folder-tab">Expediente RM-1147 · Fintech de crédito al consumo · CDMX</p>
+        <span class="stamp" aria-hidden="true">Recuperado</span>
+        <div class="folder-grid">
+          <div class="narrativa">
+            <figure class="folder-photo">
+              <img src="https://image.qwenlm.ai/public_source/26fcb8d2-c0f8-4435-9ca4-226141ddbdce/1913b3993-3fca-42be-85a7-f6d4c5d80ac8.png" width="1024" height="1024" loading="lazy" decoding="async" alt="Comprobante de pago en papel envejecido con sello rojo de tinta que dice LIQUIDADO, junto a una pluma fuente sobre un folder manila">
+              <figcaption>Comprobante 3,412 · convenio activo</figcaption>
+            </figure>
+            <h3 id="exp-titulo">Una cartera que ya había pasado por tres despachos<span class="punto">.</span></h3>
+            <p>El lote llegó con 214 días de edad promedio y tres gestiones fallidas encima. En lugar de marcar en ráfaga, segmentamos por capacidad de pago real —ingreso verificado, no buró— y reasignamos el 61% de las cuentas a convenio escalonado.</p>
+            <p>A los 12 meses, la fintech renovó con el 100% de su cartera nueva. Los datos completos se comparten bajo NDA en la consultoría inicial.</p>
+          </div>
+          <ul class="case-metrics">
+            <li><strong>$12.4 M MXN</strong><span>cartera asignada</span></li>
+            <li><strong>6,120</strong><span>cuentas gestionadas</span></li>
+            <li><strong>74.2%</strong><span>recuperado a 12 meses</span></li>
+            <li><strong>0</strong><span>quejas ante CONDUSEF</span></li>
+          </ul>
+        </div>
+        <p class="folder-foot">Datos anonimizados conforme a NDA vigente. Dirección de Operaciones, RMS iQor México.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COBERTURA -->
+  <section class="cobertura" id="cobertura" aria-labelledby="cob-titulo">
+    <span class="sec-index" aria-hidden="true">05</span>
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <h2 id="cob-titulo">Presencia donde está tu deudor, no solo donde está tu oficina<span class="punto">.</span></h2>
+        <p class="sec-note">Gestión domiciliaria verificada y tiempos de respuesta por zona.</p>
+      </div>
+      <div class="cob-grid">
+        <div data-reveal>
+          <figure class="cob-figure">
+            <img src="https://image.qwenlm.ai/public_source/26fcb8d2-c0f8-4435-9ca4-226141ddbdce/1b86f80f8-af92-46fc-a10e-f1e15d4c7a4c.png" width="1024" height="1024" loading="lazy" decoding="async" alt="Calle arbolada de la colonia Roma Norte, Ciudad de México, con casonas de principios del siglo XX al atardecer">
+          </figure>
+          <div class="office-card">
+            <h3>Oficina central</h3>
+            <address>Durango 263, Piso 3, Col. Roma Norte,<br>Alcaldía Cuauhtémoc, C.P. 06700, CDMX<br><a href="https://maps.google.com/?q=Durango+263,+Roma+Norte,+CDMX" target="_blank" rel="noopener">Cómo llegar ↗</a></address>
+            <p class="hours">Lun–Vie 9:00–19:00 h · Sáb 9:00–14:00 h</p>
+          </div>
+        </div>
+        <div data-reveal>
+          <ul class="zones">
+            <li class="zone"><span class="z-name">Valle de México</span><span class="z-time">24 h</span><span class="z-cities">CDMX, Ecatepec, Naucalpan, Tlalnepantla, Nezahualcóyotl</span></li>
+            <li class="zone"><span class="z-name">Norte</span><span class="z-time">48 h</span><span class="z-cities">Monterrey, Saltillo, Torreón, Chihuahua, Cd. Juárez</span></li>
+            <li class="zone"><span class="z-name">Bajío y Occidente</span><span class="z-time">48 h</span><span class="z-cities">Querétaro, León, Aguascalientes, Guadalajara, Morelia</span></li>
+            <li class="zone"><span class="z-name">Sureste</span><span class="z-time">72 h</span><span class="z-cities">Mérida, Cancún, Tuxtla Gutiérrez, Villahermosa, Oaxaca</span></li>
+          </ul>
+          <p class="cob-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg> Gestión domiciliaria con evidencia fotográfica y georreferenciada en cada visita. Tiempos de primer contacto por zona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (nuevo) -->
+  <section class="faq" id="faq" aria-labelledby="faq-titulo">
+    <span class="sec-index" aria-hidden="true">06</span>
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <h2 id="faq-titulo">Lo que nos preguntan antes de asignar cartera<span class="punto">.</span></h2>
+        <p class="sec-note">Respuestas directas. Si tu duda no está aquí, la resolvemos en la consultoría.</p>
+      </div>
+
+      <div class="faq-list" data-stagger>
+        <div class="faq-item" data-reveal>
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a1">
+            <span>¿Cobran algún anticipo o el costo es solo por recuperación?</span>
+            <span class="faq-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-inner"><p><strong>No cobramos anticipos.</strong> Nuestro honorario es un porcentaje sobre lo que efectivamente recuperas, pactado por escrito antes de asignar la cartera. Si no recuperamos, no pagas gestión. El esquema exacto se define en el diagnóstico inicial, sin costo.</p></div></div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a2">
+            <span>¿Qué pasa si mi cartera ya tiene más de 180 días o pasó por otros despachos?</span>
+            <span class="faq-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-inner"><p>Las carteras maduras requieren una estrategia distinta: primero hacemos un <strong>Análisis de Cartera</strong> para segmentar por capacidad de pago real, no solo por antigüedad. En muchos casos recuperamos cuentas que otros despachos dieron por perdidas, reasignándolas a convenios escalonados.</p></div></div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a3">
+            <span>¿La gestión cumple con CONDUSEF? ¿Pueden llegar a la vía judicial?</span>
+            <span class="faq-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-inner"><p>Toda gestión se conduce bajo prácticas ordenadas por <strong>CONDUSEF</strong>: sin acoso, sin contacto a terceros y en horarios permitidos. Cuando la vía judicial procede, la ejecutamos por separado con expediente sólido. La demanda es el último recurso, no la primera acción.</p></div></div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a4">
+            <span>¿Cómo protegen los datos de mi cartera?</span>
+            <span class="faq-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-inner"><p>Firmamos <strong>NDA antes del diagnóstico</strong>. Los datos se tratan conforme a la LFPDPPP, con acceso restringido, grabación y trazabilidad de cada gestión. Nunca compartimos tu cartera con terceros.</p></div></div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a5">
+            <span>¿En cuánto tiempo veo la primera recuperación?</span>
+            <span class="faq-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-inner"><p>El promedio de recuperación por lote es de <strong>47 días</strong>, pero los primeros convenios suelen cerrarse dentro de las primeras 2–3 semanas de gestión, una vez completado el diagnóstico (5 días hábiles).</p></div></div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a6">
+            <span>¿Atienden solo CDMX o todo México?</span>
+            <span class="faq-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-inner"><p>Cobertura en las <strong>32 entidades</strong>, con tiempos de respuesta de 24 a 72 horas según zona y gestión domiciliaria georreferenciada donde el caso lo amerita.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDAR -->
+  <section class="agendar dark" id="agendar" aria-labelledby="ag-titulo">
+    <span class="sec-index" aria-hidden="true">07</span>
+    <div class="wrap ag-grid">
+      <div class="ag-copy" data-reveal>
+        <h2 id="ag-titulo">Un diagnóstico de cartera, sin costo y sin compromiso<span class="punto">.</span></h2>
+        <p>30 minutos por videollamada o en Durango 263. Sales con una proyección de recuperación por escrito, aunque no asignes cartera.</p>
+        <ul class="ag-list">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg> Proyección por segmento de antigüedad en 5 días hábiles.</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Respuesta en menos de 24 horas hábiles.</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Tu información queda protegida bajo NDA y la LFPDPPP.</li>
+        </ul>
+        <div class="contact-direct">
+          <a href="tel:+528180476801">☏ +52 81 8047 6801</a>
+          <a href="https://wa.me/528180476801" target="_blank" rel="noopener">WhatsApp directo →</a>
+          <a href="mailto:atencion@rmsiqor.mx">atencion@rmsiqor.mx</a>
+        </div>
+        <figure class="sala-figure">
+          <span class="fig-frame"><img src="https://image.qwenlm.ai/public_source/26fcb8d2-c0f8-4435-9ca4-226141ddbdce/1ba65e47d-00c2-4da0-b6c6-b96ac233d8d8.png" width="1024" height="1024" loading="lazy" decoding="async" alt="Sala de reuniones vacía en una casona restaurada de la Roma Norte: mesa de madera, dos sillones claros, ventanal con luz de mañana y una libreta roja sobre la mesa"></span>
+          <figcaption>Sala de consultoría · Durango 263, Piso 3 — o por videollamada, tú eliges.</figcaption>
+        </figure>
+      </div>
+
+      <div class="form-card" data-reveal>
+        <form id="diag-form" novalidate>
+          <h3>Solicitar diagnóstico</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-nombre">Nombre completo <b aria-hidden="true">*</b></label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="f-nombre-err">
+              <p class="field-err" id="f-nombre-err" hidden>Escribe tu nombre.</p>
+            </div>
+            <div class="field">
+              <label for="f-empresa">Empresa <b aria-hidden="true">*</b></label>
+              <input id="f-empresa" name="empresa" type="text" autocomplete="organization" required aria-describedby="f-empresa-err">
+              <p class="field-err" id="f-empresa-err" hidden>Indica el nombre de tu empresa.</p>
+            </div>
+            <div class="field">
+              <label for="f-correo">Correo corporativo <b aria-hidden="true">*</b></label>
+              <input id="f-correo" name="correo" type="email" autocomplete="email" required aria-describedby="f-correo-err">
+              <p class="field-err" id="f-correo-err" hidden>Ingresa un correo válido (nombre@empresa.mx).</p>
+            </div>
+            <div class="field">
+              <label for="f-tel">Teléfono</label>
+              <input id="f-tel" name="telefono" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="f-sector">Sector</label>
+              <select id="f-sector" name="sector">
+                <option>Banca / Fintech</option><option>Retail</option><option>Telecom</option><option>Educación</option><option>Seguros</option><option>Manufactura</option><option>Otro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-cartera">Cartera aproximada <b aria-hidden="true">*</b></label>
+              <select id="f-cartera" name="cartera" required aria-describedby="f-cartera-err">
+                <option value="">Selecciona un rango…</option>
+                <option>Menos de $500 mil MXN</option>
+                <option>$500 mil – $5 M MXN</option>
+                <option>$5 M – $50 M MXN</option>
+                <option>Más de $50 M MXN</option>
+              </select>
+              <p class="field-err" id="f-cartera-err" hidden>Selecciona el rango de tu cartera.</p>
+            </div>
+            <div class="field full">
+              <label for="f-mensaje">Cuéntanos del caso (opcional)</label>
+              <textarea id="f-mensaje" name="mensaje" rows="4" placeholder="Edad promedio de la cartera, número de cuentas, gestiones previas…"></textarea>
+            </div>
+          </div>
+          <div class="form-foot">
+            <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+            <small>Al enviar aceptas el aviso de privacidad. Sin listas de correo, sin spam.</small>
+          </div>
+        </form>
+        <div id="form-ok" hidden tabindex="-1">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20"/><path d="M15 25l7 7 12-15"/></svg>
+          <h3>Solicitud recibida.</h3>
+          <p>Tu folio es <strong id="folio">RMS-000000</strong>. Un consultor senior te contactará dentro de las próximas 24 horas hábiles para agendar tu diagnóstico.</p>
+          <button class="btn btn-ghost" id="form-reset" type="button">Enviar otra solicitud</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#recuperacion" aria-label="RMS iQor México — volver arriba">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="1.5" y="1.5" width="37" height="37" rx="6" fill="#c8102e"/><path d="M10 27l7-8 5 4 8-11" stroke="#f5f3ef" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 12h5v5" stroke="#f5f3ef" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><span class="brand-name">RMS <em style="color:var(--color-accent-bright)">iQor</em> México</span></span>
+      </a>
+      <p>Despacho de cobranza extrajudicial, legal y administrativa. Parte de la red global iQor. Hecho en la Roma Norte desde 2003.</p>
+      <span class="foot-iqor">
+        <img class="iqor-tile" src="https://play-lh.googleusercontent.com/pNAjN7gkFIX7k5SUNRCyO28vHe75s8SQVzFZi3ko_y_yIITOdwaXuDGiIQJ-MsC1SfQ" width="36" height="36" loading="lazy" decoding="async" alt="Logotipo de iQor">
+        <svg class="iqor-word" viewBox="0 0 108 40" role="img" aria-label="iQor"><text x="2" y="31" font-family="Arial, Helvetica, sans-serif" font-size="34" font-style="italic" font-weight="700" letter-spacing="-1.5" fill="currentColor">iqor</text></svg>
+        <small>marca global</small>
+      </span>
+    </div>
+    <nav aria-label="Divisiones">
+      <h4>Divisiones</h4>
+      <ul class="foot-links">
+        <li><a href="#divisiones">Extrajudicial y Legal</a></li>
+        <li><a href="#divisiones">Administrativa (BPO)</a></li>
+        <li><a href="#divisiones">Subcontratación</a></li>
+        <li><a href="#divisiones">Gestoría</a></li>
+        <li><a href="#divisiones">Análisis de Cartera</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Empresa">
+      <h4>Empresa</h4>
+      <ul class="foot-links">
+        <li><a href="#metodo">Método RMS</a></li>
+        <li><a href="#respaldo">Respaldo iQor</a></li>
+        <li><a href="#expediente">Expedientes</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
+        <li><a href="#agendar">Agendar consultoría</a></li>
+      </ul>
+    </nav>
+    <div class="foot-contact">
+      <h4>Contacto</h4>
+      <address>Durango 263, Piso 3, Col. Roma Norte,<br>Alc. Cuauhtémoc, C.P. 06700, CDMX<br><a href="tel:+528180476801">+52 81 8047 6801</a><br><a href="mailto:atencion@rmsiqor.mx">atencion@rmsiqor.mx</a></address>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© <span id="year">2025</span> RMS iQor México · Todos los derechos reservados.</p>
+    <div class="foot-legal">
+      <button type="button" data-modal-open="modal-aviso">Aviso de privacidad</button>
+      <button type="button" data-modal-open="modal-terminos">Términos de servicio</button>
+    </div>
+  </div>
+</footer>
+
+<!-- MODALES -->
+<div class="modal" id="modal-aviso" role="dialog" aria-modal="true" aria-labelledby="aviso-t">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Cerrar aviso de privacidad"><svg viewBox="0 0 16 16"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+    <h3 id="aviso-t">Aviso de privacidad</h3>
+    <p>RMS iQor México, con domicilio en Durango 263 Piso 3, Col. Roma Norte, Alcaldía Cuauhtémoc, C.P. 06700, Ciudad de México, es responsable del tratamiento de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).</p>
+    <p>Los datos recabados a través de este sitio (nombre, empresa, correo y teléfono) se utilizan exclusivamente para: atender solicitudes de consultoría, elaborar cotizaciones y, en su caso, ejecutar la gestión de cobranza contratada.</p>
+    <p>Puede ejercer sus derechos ARCO (acceso, rectificación, cancelación y oposición) escribiendo a <strong>privacidad@rmsiqor.mx</strong>. No compartimos datos con terceros sin consentimiento, salvo obligación legal.</p>
+  </div>
+</div>
+<div class="modal" id="modal-terminos" role="dialog" aria-modal="true" aria-labelledby="terminos-t">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Cerrar términos de servicio"><svg viewBox="0 0 16 16"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+    <h3 id="terminos-t">Términos de servicio</h3>
+    <p>Las tasas de recuperación mostradas corresponden a resultados históricos por tipo de cartera y no constituyen garantía de resultado: cada lote se comporta distinto según sector, antigüedad y perfil del deudor.</p>
+    <p>Toda gestión de cobranza se conduce conforme a las prácticas ordenadas por CONDUSEF: sin acoso, sin contacto a terceros, sin horarios indebidos. El incumplimiento de estas prácticas por parte de nuestro personal es causal de rescisión inmediata y sanción interna.</p>
+    <p>Los honorarios se pactan únicamente como porcentaje sobre recuperación efectiva; RMS iQor México no cobra anticipos por asignación de cartera.</p>
+  </div>
+</div>
+
+<button id="to-top" aria-label="Volver arriba"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<script>
+(function(){
+'use strict';
+var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Año ---------- */
+var yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ---------- Logo iQor: cadena de fuentes con degradación elegante ---------- */
+var IQOR_FALLBACKS = [
+  'https://toppng.com/free-image/iqor-PNG-free-PNG-Images_242228',
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='104' fill='%23c8102e'/%3E%3Ctext x='256' y='316' font-family='Arial,Helvetica,sans-serif' font-size='176' font-style='italic' font-weight='700' fill='%23ffffff' text-anchor='middle'%3Eiqor%3C/text%3E%3C/svg%3E"
+];
+function iqorAdvance(img){
+  var stage = parseInt(img.getAttribute('data-stage') || '0', 10);
+  if (stage >= IQOR_FALLBACKS.length) return;
+  img.setAttribute('data-stage', String(stage + 1));
+  img.src = IQOR_FALLBACKS[stage];
+}
+document.querySelectorAll('.iqor-tile').forEach(function(img){
+  img.addEventListener('error', function(){ iqorAdvance(img); });
+  if (img.complete && img.naturalWidth === 0) iqorAdvance(img);
+});
+
+/* ---------- Header + progreso ---------- */
+var header = document.getElementById('site-header');
+var progressEl = document.getElementById('progress');
+function onHeaderScroll(){
+  header.classList.toggle('is-scrolled', window.scrollY > 8);
+  if (progressEl){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    progressEl.style.width = pct + '%';
+  }
+}
+window.addEventListener('scroll', onHeaderScroll, {passive:true});
+onHeaderScroll();
+
+/* ---------- Menú móvil ---------- */
+var navToggle = document.getElementById('nav-toggle');
+var nav = document.getElementById('main-nav');
+navToggle.addEventListener('click', function(){
+  var open = nav.classList.toggle('is-open');
+  navToggle.classList.toggle('is-open', open);
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  navToggle.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+});
+nav.addEventListener('click', function(e){
+  if (e.target.closest('a')) {
+    nav.classList.remove('is-open');
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded','false');
+  }
+});
+
+/* ---------- Stagger ---------- */
+document.querySelectorAll('[data-stagger]').forEach(function(group){
+  Array.prototype.forEach.call(group.children, function(child, i){
+    if (child.hasAttribute('data-reveal')) child.style.setProperty('--d', (i*50)+'ms');
+  });
+});
+
+/* ---------- Reveal ---------- */
+var revealIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting){ entry.target.classList.add('in-view'); revealIO.unobserve(entry.target); }
+  });
+},{threshold:.15, rootMargin:'0px 0px -48px 0px'});
+document.querySelectorAll('[data-reveal]').forEach(function(el){ revealIO.observe(el); });
+
+/* ---------- Espina método + gráfica ---------- */
+var lineIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting){ entry.target.classList.add('go'); lineIO.unobserve(entry.target); }
+  });
+},{threshold:.3});
+var stepsEl = document.getElementById('steps');
+var chartCard = document.getElementById('card-analisis');
+if (stepsEl) lineIO.observe(stepsEl);
+if (chartCard) lineIO.observe(chartCard);
+
+/* ---------- Contadores ---------- */
+function formatNum(n, dec){ return n.toLocaleString('es-MX',{minimumFractionDigits:dec, maximumFractionDigits:dec}); }
+function runCounter(el){
+  var target = parseFloat(el.getAttribute('data-count'));
+  var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
+  var suffix = el.getAttribute('data-suffix') || '';
+  if (prefersReduced){ el.textContent = formatNum(target, dec) + suffix; return; }
+  var startTs = null, dur = 1600;
+  function frame(ts){
+    if (!startTs) startTs = ts;
+    var p = Math.min((ts - startTs) / dur, 1);
+    var eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = formatNum(target * eased, dec) + suffix;
+    if (p < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+var countIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting){ runCounter(entry.target); countIO.unobserve(entry.target); }
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(function(el){ countIO.observe(el); });
+
+/* ---------- Dona ---------- */
+var donut = document.getElementById('donut');
+if (donut) setTimeout(function(){ donut.classList.add('go'); }, prefersReduced ? 0 : 400);
+
+/* ---------- Cartera viva ---------- */
+var carteraEl = document.getElementById('cartera-viva');
+if (carteraEl){
+  var carteraVal = 48721455;
+  setInterval(function(){
+    if (document.hidden) return;
+    carteraVal += 6000 + Math.floor(Math.random() * 22000);
+    carteraEl.innerHTML = '$' + carteraVal.toLocaleString('es-MX') + ' MXN <span class="live-dot" aria-hidden="true"></span>';
+    carteraEl.classList.remove('flash'); void carteraEl.offsetWidth; carteraEl.classList.add('flash');
+  }, 5000);
+}
+
+/* ---------- FAQ acordeón ---------- */
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(o){
+      o.classList.remove('open');
+      o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if (!isOpen){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+
+/* ---------- Scrollspy ---------- */
+var spyLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+var spyPairs = [];
+spyLinks.forEach(function(link){
+  var sec = document.querySelector(link.getAttribute('href'));
+  if (sec) spyPairs.push([sec, link]);
+});
+var spyIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting){
+      spyPairs.forEach(function(pair){ pair[1].classList.toggle('is-active', pair[0] === entry.target); });
+    }
+  });
+},{rootMargin:'-40% 0px -55% 0px'});
+spyPairs.forEach(function(pair){ spyIO.observe(pair[0]); });
+
+/* ---------- Modales ---------- */
+var lastFocus = null;
+function openModal(id){
+  var m = document.getElementById(id);
+  if (!m) return;
+  lastFocus = document.activeElement;
+  m.classList.add('is-open');
+  document.body.classList.add('no-scroll');
+  var f = m.querySelector('.modal-close');
+  if (f) f.focus();
+}
+function closeModal(m){
+  m.classList.remove('is-open');
+  document.body.classList.remove('no-scroll');
+  if (lastFocus) lastFocus.focus();
+}
+document.querySelectorAll('[data-modal-open]').forEach(function(btn){
+  btn.addEventListener('click', function(){ openModal(btn.getAttribute('data-modal-open')); });
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  m.addEventListener('click', function(e){
+    if (e.target === m || e.target.closest('[data-modal-close]')) closeModal(m);
+  });
+  m.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){ closeModal(m); return; }
+    if (e.key === 'Tab'){
+      var foc = m.querySelectorAll('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (!foc.length) return;
+      var first = foc[0], last = foc[foc.length - 1];
+      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+});
+
+/* ---------- Formulario ---------- */
+var form = document.getElementById('diag-form');
+var okPanel = document.getElementById('form-ok');
+if (form){
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function(field){
+      var err = document.getElementById(field.id + '-err');
+      var bad = !field.value.trim();
+      if (!bad && field.type === 'email') bad = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(field.value.trim());
+      if (field.tagName === 'SELECT' && field.value === '') bad = true;
+      if (err) err.hidden = !bad;
+      field.classList.toggle('has-error', bad);
+      field.setAttribute('aria-invalid', bad ? 'true' : 'false');
+      if (bad) valid = false;
+    });
+    if (!valid){
+      var firstBad = form.querySelector('.has-error');
+      if (firstBad) firstBad.focus();
+      return;
+    }
+    var folioEl = document.getElementById('folio');
+    if (folioEl) folioEl.textContent = 'RMS-' + String(Math.floor(100000 + Math.random() * 900000));
+    form.hidden = true;
+    okPanel.hidden = false;
+    okPanel.focus();
+  });
+  var resetBtn = document.getElementById('form-reset');
+  if (resetBtn) resetBtn.addEventListener('click', function(){
+    form.reset();
+    form.querySelectorAll('.has-error').forEach(function(f){ f.classList.remove('has-error'); f.removeAttribute('aria-invalid'); });
+    form.querySelectorAll('.field-err').forEach(function(p){ p.hidden = true; });
+    form.hidden = false;
+    okPanel.hidden = true;
+  });
+}
+
+/* ---------- Volver arriba ---------- */
+var toTop = document.getElementById('to-top');
+window.addEventListener('scroll', function(){
+  toTop.classList.toggle('is-visible', window.scrollY > 640);
+},{passive:true});
+toTop.addEventListener('click', function(){
+  window.scrollTo({top:0, behavior: prefersReduced ? 'auto' : 'smooth'});
+});
+})();
+</script>
+
+<!--
+## Decisiones de Diseño (v7 — nivel 9/10)
+1. FRANJA DE CUMPLIMIENTO (CONDUSEF · LFPDPPP · llamadas grabadas · NDA): en cobranza B2B la confianza regulatoria es el verdadero diferenciador; se coloca temprano, justo después del hero.
+2. FAQ con objeciones reales (anticipos, carteras viejas, vía judicial, datos, tiempos, cobertura): maneja la fricción de compra antes del formulario.
+3. Paleta confirmada marino + rojo iQor: el azul marino es la base de autoridad y el rojo la voz de marca.
+4. CTA del hero lleva directo a agendar diagnóstico sin costo.
+5. Logo iQor con cadena de respaldo (Google Play → TopPNG → vector embebido): nunca un cuadro roto.
+6. Imagen con función, datos no redondos y cero kickers sobre titulares: se mantiene el lenguaje anti-plantilla de todo el sitio.
+-->
+</body>
+</html>
