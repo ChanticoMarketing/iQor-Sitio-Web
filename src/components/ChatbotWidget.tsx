@@ -114,13 +114,14 @@ export default function ChatbotWidget() {
         );
       }
     } catch (err: unknown) {
-      const errorMsg = err instanceof Error ? err.message : 'Error inesperado';
+      const rawError = err instanceof Error ? err.message : 'Error inesperado';
+      const cleanError = rawError.replace(/[.\s]+$/, '');
       setMessages((prev) =>
         prev.map((msg) =>
           msg.id === botMessageId
             ? {
                 ...msg,
-                content: `⚠️ **Aviso:** ${errorMsg}. Por favor intenta de nuevo o comunícate a nuestras sedes.`,
+                content: `⚠️ **Aviso:** ${cleanError}. Por favor intenta de nuevo o comunícate a nuestras sedes.`,
               }
             : msg
         )
