@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import GsapProvider from '@/components/GsapProvider';
+import ChatbotWidget from '@/components/ChatbotWidget';
 
 export const metadata: Metadata = {
   title: 'RMS iQor México — Cobranza extrajudicial, legal y administrativa en CDMX',
@@ -186,6 +187,7 @@ export default function RootLayout({
         <div className="grain" aria-hidden="true"></div>
         <GsapProvider />
         {children}
+        <ChatbotWidget />
       </body>
     </html>
   );
