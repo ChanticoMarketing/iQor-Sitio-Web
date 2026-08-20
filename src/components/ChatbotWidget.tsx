@@ -17,6 +17,7 @@ const QUICK_PROMPTS = [
 ];
 
 export default function ChatbotWidget() {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -24,7 +25,7 @@ export default function ChatbotWidget() {
       role: 'assistant',
       content:
         'Hola, soy el **Asistente Virtual de RMS iQor México**. ¿En qué puedo orientarte hoy sobre nuestras soluciones de recuperación de cartera, BPO o atracción de talento?',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: 'Ahora',
     },
   ]);
   const [input, setInput] = useState('');
@@ -33,6 +34,11 @@ export default function ChatbotWidget() {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Asegurar renderizado seguro en cliente y evitar hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -52,11 +58,13 @@ export default function ChatbotWidget() {
     setHasInteracted(true);
     setInput('');
 
+    const nowTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
       content: text,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: nowTime,
     };
 
     const updatedMessages = [...messages, userMessage];
@@ -68,7 +76,7 @@ export default function ChatbotWidget() {
       id: botMessageId,
       role: 'assistant',
       content: '',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: nowTime,
     };
 
     setMessages((prev) => [...prev, initialBotMessage]);
@@ -114,14 +122,13 @@ export default function ChatbotWidget() {
         );
       }
     } catch (err: unknown) {
-      const rawError = err instanceof Error ? err.message : 'Error inesperado';
-      const cleanError = rawError.replace(/[.\s]+$/, '');
+      const errorMsg = err instanceof Error ? err.message : 'Error inesperado';
       setMessages((prev) =>
         prev.map((msg) =>
           msg.id === botMessageId
             ? {
                 ...msg,
-                content: `⚠️ **Aviso:** ${cleanError}. Por favor intenta de nuevo o comunícate a nuestras sedes.`,
+                content: `⚠️ **Aviso:** ${errorMsg}. Por favor intenta de nuevo o comunícate a nuestras sedes.`,
               }
             : msg
         )
@@ -138,7 +145,7 @@ export default function ChatbotWidget() {
         role: 'assistant',
         content:
           'Hola, soy el **Asistente Virtual de RMS iQor México**. ¿En qué puedo orientarte hoy sobre nuestras soluciones de recuperación de cartera, BPO o atracción de talento?',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        timestamp: 'Ahora',
       },
     ]);
     setHasInteracted(false);
@@ -174,12 +181,45 @@ export default function ChatbotWidget() {
     });
   };
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <>
-      {/* Contenedor del Botón Flotante */}
-      <div className="iqor-chat-container">
+      {/* Contenedor del Botón Flotante con estilos inline a prueba de fallos */}
+      <div
+        className="iqor-chat-container"
+        style={{
+          position: 'fixed',
+          bottom: '24px',
+          right: '24px',
+          zIndex: 9999999,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          pointerEvents: 'auto',
+        }}
+      >
         {!isOpen && (
-          <div className="iqor-chat-tooltip">
+          <div
+            className="iqor-chat-tooltip"
+            style={{
+              marginBottom: '10px',
+              background: 'rgba(12, 18, 29, 0.95)',
+              color: '#ffffff',
+              padding: '6px 14px',
+              borderRadius: '999px',
+              fontSize: '12px',
+              fontWeight: 600,
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
+              backdropFilter: 'blur(12px)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+            }}
+          >
             💬 ¿Tienes dudas sobre iQor?
           </div>
         )}
@@ -189,8 +229,35 @@ export default function ChatbotWidget() {
           className="iqor-chat-trigger"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Cerrar asistente' : 'Abrir asistente virtual de iQor'}
+          style={{
+            width: '60px',
+            height: '60px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #c8102e 0%, #ff334b 100%)',
+            color: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: 'none',
+            cursor: 'pointer',
+            boxShadow: '0 10px 30px rgba(200, 16, 46, 0.45)',
+            position: 'relative',
+            outline: 'none',
+          }}
         >
-          <span className="iqor-chat-badge" />
+          <span
+            className="iqor-chat-badge"
+            style={{
+              position: 'absolute',
+              top: '2px',
+              right: '2px',
+              width: '14px',
+              height: '14px',
+              borderRadius: '50%',
+              background: '#10b981',
+              border: '2px solid #0c121d',
+            }}
+          />
 
           {isOpen ? (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -207,7 +274,28 @@ export default function ChatbotWidget() {
 
       {/* Ventana de Chat */}
       {isOpen && (
-        <div id="iqor-chatbot-window" className="iqor-chat-window">
+        <div
+          id="iqor-chatbot-window"
+          className="iqor-chat-window"
+          style={{
+            position: 'fixed',
+            bottom: '96px',
+            right: '24px',
+            width: '390px',
+            maxWidth: 'calc(100vw - 32px)',
+            height: '570px',
+            maxHeight: 'calc(100vh - 120px)',
+            background: 'rgba(12, 18, 29, 0.97)',
+            backdropFilter: 'blur(24px)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: '18px',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.85)',
+            zIndex: 9999999,
+          }}
+        >
           {/* Header */}
           <div className="iqor-chat-header">
             <div className="iqor-chat-header-info">
