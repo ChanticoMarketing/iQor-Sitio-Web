@@ -4815,3 +4815,361 @@ html.lenis body {
   color: var(--color-text-inverse-muted);
 }
 
+/* ============================================================
+   IQOR CHATBOT WIDGET (VANILLA CSS NATIVO)
+   ============================================================ */
+
+.iqor-chat-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-body, system-ui, sans-serif);
+  pointer-events: auto;
+}
+
+.iqor-chat-tooltip {
+  margin-bottom: 10px;
+  background: rgba(12, 18, 29, 0.95);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  animation: iqorBounce 2s infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@keyframes iqorBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+  60% { transform: translateY(-2px); }
+}
+
+.iqor-chat-trigger {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c8102e 0%, #ff334b 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(200, 16, 46, 0.45);
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s;
+  position: relative;
+  outline: none;
+}
+
+.iqor-chat-trigger:hover {
+  transform: scale(1.06);
+  box-shadow: 0 14px 40px rgba(200, 16, 46, 0.65);
+}
+
+.iqor-chat-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 2px solid #0c121d;
+}
+
+.iqor-chat-window {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  width: 390px;
+  max-width: calc(100vw - 32px);
+  height: 570px;
+  max-height: calc(100vh - 120px);
+  background: rgba(12, 18, 29, 0.97);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  z-index: 999999;
+  animation: iqorChatOpen 0.25s var(--ease-out);
+}
+
+@keyframes iqorChatOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.iqor-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(22, 32, 48, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.iqor-chat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iqor-chat-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #c8102e 0%, #ff334b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.iqor-chat-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iqor-chat-pill {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(200, 16, 46, 0.2);
+  color: #ff5468;
+  border: 1px solid rgba(200, 16, 46, 0.35);
+  padding: 2px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.iqor-chat-status {
+  font-size: 11px;
+  color: #10b981;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.iqor-chat-header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.iqor-chat-btn-icon {
+  background: transparent;
+  border: none;
+  color: var(--color-text-inverse-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.iqor-chat-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.iqor-chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.iqor-chat-msg-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.iqor-chat-msg-row.user {
+  align-items: flex-end;
+}
+
+.iqor-chat-msg-row.assistant {
+  align-items: flex-start;
+}
+
+.iqor-chat-bubble {
+  max-width: 88%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  word-break: break-word;
+}
+
+.iqor-chat-bubble.user {
+  background: linear-gradient(135deg, #c8102e 0%, #a3122d 100%);
+  color: #ffffff;
+  border-bottom-right-radius: 2px;
+}
+
+.iqor-chat-bubble.assistant {
+  background: rgba(22, 32, 48, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f8f7f5;
+  border-bottom-left-radius: 2px;
+}
+
+.iqor-chat-time {
+  font-size: 10px;
+  color: var(--color-text-inverse-muted);
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+.iqor-chat-quick-section {
+  padding-top: 6px;
+}
+
+.iqor-chat-quick-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-inverse-muted);
+  margin-bottom: 8px;
+}
+
+.iqor-chat-quick-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.iqor-chat-quick-btn {
+  background: rgba(22, 32, 48, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e5e0d4;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.iqor-chat-quick-btn:hover {
+  background: rgba(200, 16, 46, 0.15);
+  border-color: rgba(200, 16, 46, 0.5);
+  color: #ffffff;
+}
+
+.iqor-chat-footer {
+  padding: 12px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0c121d;
+}
+
+.iqor-chat-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.iqor-chat-input {
+  flex: 1;
+  background: rgba(22, 32, 48, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.iqor-chat-input:focus {
+  border-color: var(--color-accent);
+}
+
+.iqor-chat-input:disabled {
+  opacity: 0.5;
+}
+
+.iqor-chat-send {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #c8102e 0%, #ff334b 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.iqor-chat-send:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: scale(1.03);
+}
+
+.iqor-chat-send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.iqor-chat-footer-note {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 10px;
+  color: var(--color-text-inverse-muted);
+}
+
+.iqor-chat-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.iqor-chat-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8792a2;
+  animation: iqorDotPulse 1.4s infinite ease-in-out both;
+}
+
+.iqor-chat-dot:nth-child(1) { animation-delay: -0.32s; }
+.iqor-chat-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes iqorDotPulse {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
+}
+

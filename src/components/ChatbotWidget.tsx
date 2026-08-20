@@ -34,7 +34,6 @@ export default function ChatbotWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Auto-scroll al final cuando hay nuevos mensajes o texto entrante
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -46,7 +45,6 @@ export default function ChatbotWidget() {
     }
   }, [isOpen, messages, isLoading]);
 
-  // Manejo del envío de mensajes
   const handleSendMessage = async (textToSend?: string) => {
     const text = (textToSend || input).trim();
     if (!text || isLoading) return;
@@ -76,7 +74,6 @@ export default function ChatbotWidget() {
     setMessages((prev) => [...prev, initialBotMessage]);
 
     try {
-      // Enviar historial sin el mensaje de bienvenida inicial local
       const apiPayload = updatedMessages
         .filter((m) => m.id !== 'welcome')
         .map((m) => ({
@@ -146,11 +143,9 @@ export default function ChatbotWidget() {
     setHasInteracted(false);
   };
 
-  // Renderizador simple de markdown (negrita, viñetas, saltos de línea)
   const formatMarkdown = (text: string) => {
     const lines = text.split('\n');
     return lines.map((line, i) => {
-      // Reemplazo básico de **texto** a <strong>texto</strong>
       const formatted = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
       if (line.trim().startsWith('* ') || line.trim().startsWith('- ')) {
@@ -158,20 +153,20 @@ export default function ChatbotWidget() {
         return (
           <li
             key={i}
-            className="ml-4 list-disc text-slate-200"
+            style={{ marginLeft: '16px', listStyleType: 'disc', color: '#f8f7f5' }}
             dangerouslySetInnerHTML={{ __html: bulletText }}
           />
         );
       }
 
       if (!line.trim()) {
-        return <div key={i} className="h-2" />;
+        return <div key={i} style={{ height: '6px' }} />;
       }
 
       return (
         <p
           key={i}
-          className="mb-1 leading-relaxed"
+          style={{ marginBottom: '4px', lineHeight: '1.5' }}
           dangerouslySetInnerHTML={{ __html: formatted }}
         />
       );
@@ -180,50 +175,30 @@ export default function ChatbotWidget() {
 
   return (
     <>
-      {/* Botón Flotante / Launcher */}
-      <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end">
+      {/* Contenedor del Botón Flotante */}
+      <div className="iqor-chat-container">
         {!isOpen && (
-          <div className="relative mb-2 hidden md:block animate-bounce">
-            <div className="rounded-full bg-slate-900/90 px-3 py-1 text-xs font-medium text-slate-200 shadow-xl border border-slate-700/60 backdrop-blur-md">
-              💬 ¿Tienes dudas sobre iQor?
-            </div>
+          <div className="iqor-chat-tooltip">
+            💬 ¿Tienes dudas sobre iQor?
           </div>
         )}
 
         <button
           id="iqor-chatbot-trigger"
+          className="iqor-chat-trigger"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Cerrar asistente' : 'Abrir asistente virtual de iQor'}
-          className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-tr from-[#ff4d2e] via-[#ff6b4a] to-[#ff8c69] text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(255,85,51,0.5)] focus:outline-none focus:ring-2 focus:ring-[#ff6b4a] focus:ring-offset-2 focus:ring-offset-slate-950"
         >
-          {/* Indicador de estado en línea */}
-          <span className="absolute top-1 right-1 flex h-3.5 w-3.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-slate-950"></span>
-          </span>
+          <span className="iqor-chat-badge" />
 
           {isOpen ? (
-            <svg
-              className="h-6 w-6 transition-transform duration-200 group-hover:rotate-90"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg
-              className="h-7 w-7 transition-transform duration-200 group-hover:scale-110"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-              />
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>
           )}
         </button>
@@ -231,93 +206,75 @@ export default function ChatbotWidget() {
 
       {/* Ventana de Chat */}
       {isOpen && (
-        <div
-          id="iqor-chatbot-window"
-          className="fixed bottom-24 right-4 z-[9999] flex h-[580px] max-h-[85vh] w-[92vw] sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-950/95 text-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-300 animate-in fade-in zoom-in-95"
-        >
+        <div id="iqor-chatbot-window" className="iqor-chat-window">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-slate-800/80 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 px-4 py-3.5">
-            <div className="flex items-center space-x-3">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#ff4d2e] to-[#ff7a5c] shadow-md">
-                <span className="font-bold text-white text-sm tracking-wider">iQ</span>
-                <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-emerald-500 border-2 border-slate-900" />
-              </div>
+          <div className="iqor-chat-header">
+            <div className="iqor-chat-header-info">
+              <div className="iqor-chat-avatar">iQ</div>
               <div>
-                <div className="flex items-center gap-1.5">
-                  <h3 className="text-sm font-semibold text-white">Asistente iQor</h3>
-                  <span className="rounded bg-[#ff4d2e]/20 px-1.5 py-0.2 text-[10px] font-semibold text-[#ff8c69] border border-[#ff4d2e]/30">
-                    DEMO IA
-                  </span>
+                <div className="iqor-chat-title">
+                  <span>Asistente iQor</span>
+                  <span className="iqor-chat-pill">Demo IA</span>
                 </div>
-                <p className="text-[11px] text-emerald-400 font-medium">● En línea | RMS México</p>
+                <div className="iqor-chat-status">● En línea | RMS México</div>
               </div>
             </div>
 
-            <div className="flex items-center space-x-1">
+            <div className="iqor-chat-header-actions">
               <button
                 onClick={handleReset}
                 title="Reiniciar conversación"
-                className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition-colors"
+                className="iqor-chat-btn-icon"
               >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+                  <path d="M21 3v5h-5" />
+                  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+                  <path d="M3 21v-5h5" />
                 </svg>
               </button>
               <button
                 onClick={() => setIsOpen(false)}
                 title="Minimizar"
-                className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition-colors"
+                className="iqor-chat-btn-icon"
               >
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             </div>
           </div>
 
-          {/* Body de Mensajes */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs sm:text-sm scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+          {/* Cuerpo de Mensajes */}
+          <div className="iqor-chat-body">
             {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
-              >
-                <div
-                  className={`max-w-[88%] rounded-2xl px-3.5 py-2.5 shadow-md ${
-                    msg.role === 'user'
-                      ? 'bg-gradient-to-r from-[#ff4d2e] to-[#ff6b4a] text-white rounded-br-none'
-                      : 'bg-slate-900/90 text-slate-200 border border-slate-800/80 rounded-bl-none'
-                  }`}
-                >
+              <div key={msg.id} className={`iqor-chat-msg-row ${msg.role}`}>
+                <div className={`iqor-chat-bubble ${msg.role}`}>
                   {msg.content ? (
                     <div>{formatMarkdown(msg.content)}</div>
                   ) : (
-                    <div className="flex items-center space-x-1.5 py-1 text-slate-400">
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.3s]"></div>
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.15s]"></div>
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-slate-400"></div>
+                    <div className="iqor-chat-dots">
+                      <div className="iqor-chat-dot" />
+                      <div className="iqor-chat-dot" />
+                      <div className="iqor-chat-dot" />
                     </div>
                   )}
                 </div>
-                <span className="mt-1 px-1 text-[10px] text-slate-500">{msg.timestamp}</span>
+                <span className="iqor-chat-time">{msg.timestamp}</span>
               </div>
             ))}
 
-            {/* Quick Prompts (si aún no se ha interactuado mucho) */}
+            {/* Quick Prompts iniciales */}
             {!hasInteracted && messages.length <= 2 && (
-              <div className="pt-2">
-                <p className="text-[11px] font-medium text-slate-400 mb-2">Preguntas frecuentes:</p>
-                <div className="flex flex-col gap-1.5">
+              <div className="iqor-chat-quick-section">
+                <p className="iqor-chat-quick-title">Preguntas frecuentes:</p>
+                <div className="iqor-chat-quick-grid">
                   {QUICK_PROMPTS.map((prompt, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleSendMessage(prompt)}
-                      className="text-left rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 text-xs text-slate-300 hover:border-[#ff4d2e]/50 hover:bg-slate-800/80 hover:text-white transition-all duration-150"
+                      className="iqor-chat-quick-btn"
                     >
                       🔹 {prompt}
                     </button>
@@ -330,13 +287,13 @@ export default function ChatbotWidget() {
           </div>
 
           {/* Footer Input */}
-          <div className="border-t border-slate-800/80 bg-slate-950 p-3">
+          <div className="iqor-chat-footer">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
                 handleSendMessage();
               }}
-              className="flex items-center space-x-2"
+              className="iqor-chat-form"
             >
               <input
                 ref={inputRef}
@@ -345,19 +302,21 @@ export default function ChatbotWidget() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Escribe tu consulta sobre iQor..."
                 disabled={isLoading}
-                className="flex-1 rounded-xl border border-slate-800 bg-slate-900/80 px-3.5 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:border-[#ff4d2e] focus:outline-none focus:ring-1 focus:ring-[#ff4d2e] disabled:opacity-50"
+                className="iqor-chat-input"
               />
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#ff4d2e] to-[#ff6b4a] text-white transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="iqor-chat-send"
+                aria-label="Enviar mensaje"
               >
-                <svg className="h-4 w-4 transform rotate-90" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
                 </svg>
               </button>
             </form>
-            <div className="mt-1.5 flex items-center justify-between px-1 text-[10px] text-slate-500">
+            <div className="iqor-chat-footer-note">
               <span>Demo RMS iQor México</span>
               <span>Esquema a éxito • B2B</span>
             </div>
